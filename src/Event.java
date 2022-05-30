@@ -1,17 +1,17 @@
 import java.util.*;
 
-public class Party {
+public class Event {
     private List<Client> clients = new ArrayList<>();
     private Set<String> dish = new HashSet<>();
-    private Map<Integer, Client> phoneToGuest = new HashMap<>();
+    private Map<Integer, Client> phoneToClient = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
 
-     public void addQuest () {
+     public void addClients() {
          System.out.println("Give the client's name: ");
          String name = scanner.nextLine();
 
-         System.out.println("State the preferred meal: ");
-         String meal = scanner.nextLine();
+         System.out.println("State the preferred dish: ");
+         String dish = scanner.nextLine();
 
          System.out.println("Give the client phone number: ");
          int phoneNumber = Integer.valueOf(scanner.nextLine());
@@ -39,28 +39,28 @@ public class Party {
          }
 
 
-         Client client =new Client(name, meal,phoneNumber,isVegan, isVip);
+         Client client =new Client(name, dish,phoneNumber,isVegan, isVip);
 
-         dish.add(meal);
-         phoneToGuest.put(phoneNumber,client);
+         this.dish.add(dish);
+         phoneToClient.put(phoneNumber,client);
          clients.add(client);
      }
 
-     public void displayMeals(){
-         for (String meal: dish){
-             System.out.println(meal);
+     public void displayDishs(){
+         for (String dish: dish){
+             System.out.println(dish);
          }
      }
 
      public void displayQuestByPhoneNumber(){
          System.out.println("Give phone number: ");
          Integer phoneNumber = Integer.valueOf(scanner.nextLine());
-         Client quest = phoneToGuest.get(phoneNumber);
+         Client quest = phoneToClient.get(phoneNumber);
 
          quest.displayQuestInformation();
      }
 
-     public void displayQuests() {
+     public void displayClients() {
         for (Client quest : clients) {
             quest.displayQuestInformation();
             System.out.println();
